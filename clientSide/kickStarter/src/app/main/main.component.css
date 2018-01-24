@@ -1,0 +1,45 @@
+
+.header{
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+.body{
+  margin-left: 100px;
+  margin-top: 40px;
+}
+
+span{
+  font-size: 32px;
+  margin-right: 20px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+ul{
+  padding: 0;
+}
+
+ul > li{
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.body__project-preview{
+  width: 25%;
+  margin-top: 50px;
+  border: 1px solid rgba(0,0,0,0.6);
+}
+
+.body__project-preview > ul >li{
+  display: block;
+  padding-left: 15px;
+  padding-bottom: 10px;
+}
+
+hr{
+  width: 90%;
+}

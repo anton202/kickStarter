@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  categorys = ['Games','Film','Arts','Publishing','Food & Craft','Design & Tech','Comics & illustration','Music']
+  category = "Games";
   constructor() { }
 
+  getCategory(value){
+    this.category = value;
+  }
   ngOnInit() {
   }
 
