@@ -1,3 +1,67 @@
-<p>
-  start-project works!
-</p>
+
+<div class="body">
+
+  <h2>Let's get started</h2>
+  <form (ngSubmit)="encodeImageFileAsURL(img2,f.value)" #f="ngForm">
+  <div class="body__input">
+    <div class="body__input__left-side">
+      <label for="imgFile">Project Img</label>
+    </div>
+    <div class="body__input__right-side">
+      <p>choose an img that represnts your project.</p>
+      <input id="imgFile" type="file" name="img" ngModel  #img2>
+
+    </div>
+  </div>
+
+  <div class="body__input">
+    <div class="body__input__left-side">
+
+        <label for="projectTitle">Project Title</label>
+    </div>
+
+    <div class="body__input__right-side">
+      <input id="projectTitle" type="text" name="title" ngModel>
+      <p>choose a title that that describes your project</p>
+    </div>
+  </div>
+
+  <div class="body__input">
+    <div class="body__input__left-side">
+      <label for="Category">Category</label>
+    </div>
+
+    <div class="body__input__right-side">
+    <select id="Category" name="Category" ngModel>
+      <option value="games">Games</option>
+      <option value="film">Film</option>
+      <option value="arts">Arts</option>
+      <option value="publishing">Publishing</option>
+      <option value="FoodCraft">Food & Craft</option>
+      <option value="designTech">design & Tech</option>
+      <option value="comicsIllustration">Comics & illustration</option>
+      <option value="music">Music</option>
+    </select>
+    </div>
+  </div>
+
+  <div class="body__input">
+    <div class="body__input__left-side">
+      <label for="funding">Funding duration</label>
+    </div>
+
+    <div class="body__input__right-side">
+      <input id="funding" type="number" name="fundingDurataion" ngModel>
+      <p>max funding duration is 60 days</p>
+    </div>
+  </div>
+
+  <div class="body__input">
+        <label for="description">Project Description</label>
+
+      <textarea id="description" [froalaEditor] ngModel name="foalaEditor">Hello, Froala!</textarea>
+
+  <button type="submit" name="button">Create project</button>
+</div>
+  </form>
+</div>

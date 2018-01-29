@@ -1,0 +1,67 @@
+.body{
+  width: 60%;
+  margin: auto;
+
+}
+
+h2{
+  width: 70%;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.body__input{
+  width: 70%;
+  margin: auto;
+  margin-top: 50px;
+  border: 0.5px solid rgba(0,0,0,0.7);
+  border-radius: 6px;
+  background-color: #F8F9FD;
+}
+
+.body__input__right-side{
+  display: inline-block;
+  width: 60%;
+}
+
+.body__input__left-side{
+  width: 30%;
+  height: 100%;
+  display: inline-block;
+}
+
+label{
+  margin-left: 30px;
+  width: 20%;
+}
+
+input, option{
+  margin-top: 20px;
+  width: 90%;
+}
+
+select{
+  margin-top:20px;
+  margin-bottom: 20px;
+  height: 25px;
+  width: 90%;
+}
+
+#description{
+margin-top: 50px;
+}
+
+button{
+  display: block;
+  width: 50%;
+  margin: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    background-color: #009E74;
+    border: 0;
+    color:white;
+    height: 35px;
+    font-size: 16px;
+
+}

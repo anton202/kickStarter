@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 
 import { AppComponent } from './app.component';
@@ -25,10 +27,10 @@ import { FooterComponent } from './footer/footer.component';
     ViewAllComponent,
     ViewProjectComponent,
     FooterComponent,
-  
+
   ],
   imports: [
-    BrowserModule
+    BrowserModule,FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
