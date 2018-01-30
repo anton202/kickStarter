@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
 date = new Date().toLocaleDateString();
 totalUsers = 1000;
 totalProjects = 200;
+monyContributed = '340,000$';
   constructor() { }
 
   ngOnInit() {

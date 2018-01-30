@@ -21,4 +21,6 @@ stratProjectInfo;
     reader.readAsDataURL(file);
   }
 
+  ngOnInit(){}
+
 }

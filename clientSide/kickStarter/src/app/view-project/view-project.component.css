@@ -1,0 +1,57 @@
+.body{
+  margin-top: 50px;
+  width: 80%;
+  margin: auto;
+  font-family: arial;
+}
+
+img{
+  width: 40%;
+  display:inline-block;
+}
+
+h1{
+  margin-top: 50px;
+}
+
+.body__project-stats{
+  width: 40%;
+  margin-left: 15%;
+
+
+  display: inline-block;
+}
+
+ul{
+  list-style: none;
+}
+
+ul>li{
+  font-size: 32px;
+}
+
+ul>li>p{
+  font-size: 20px
+}
+
+.body__project-stats > input{
+  margin-left: 9%;
+  width: 70%;
+  height: 30px;
+  margin-bottom: 25px;
+}
+
+button{
+    display: block;
+    width: 60%;
+    margin-left: 9%;
+    background-color: #009E74;
+    border: 0;
+    color:white;
+    height: 50px;
+    font-size: 16px;
+}
+
+.body__project-description{
+  margin-top: 100px;
+}
