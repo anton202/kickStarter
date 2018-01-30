@@ -1,0 +1,9 @@
+.body{
+  border-top: 2px solid gray;
+  background-color: #FFFFFF;
+  margin-top: 50px;
+}
+
+p{
+  padding-left: 50px;
+}
