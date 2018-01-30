@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { ServerService } from './server.service';
 
 
 
@@ -46,9 +48,9 @@ const routes = [
   ],
   imports: [
     BrowserModule,FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),HttpModule
   ],
-  providers: [],
+  providers: [ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

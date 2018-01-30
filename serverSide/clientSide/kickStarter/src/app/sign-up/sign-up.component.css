@@ -34,3 +34,9 @@ button {
   border: 0;
   margin-bottom: 30px;
 }
+
+.body_reg-status{
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}

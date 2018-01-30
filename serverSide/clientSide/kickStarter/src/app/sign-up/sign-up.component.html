@@ -1,11 +1,13 @@
 <div class="body">
-  <form>
+  <form (ngSubmit)="userInfo(f.value)" #f="ngForm">
     <h2>Sign up</h2>
-    <input type="text" name="name" placeholder="Name">
-    <input type="email" name="email" placeholder="Email">
-    <input type="password" name="password" placeholder="Password">
+    <input type="text" name="name" placeholder="Name" ngModel required>
+    <input type="email" name="email" placeholder="Email" ngModel required>
+    <input type="password" name="password" placeholder="Password" ngModel required>
     <button type="submit" name="button">create account</button>
-
+      <div class="body_reg-status" *ngIf="registerStaus">
+        {{registerStaus}}
+      </div>
   </form>
 
 
