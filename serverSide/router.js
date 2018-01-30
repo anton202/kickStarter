@@ -16,9 +16,10 @@ router.post('/register',(req,res)=>{
   const password = req.body.data.password;
   const email = req.body.data.email;
 
+  users.findAll({where: {email}}).then(data=>{
+    if(data !== null) return res.json("email already exist")
 
-
-  bcrypt.genSalt(saltRounds, (err, salt) => {
+    bcrypt.genSalt(saltRounds, (err, salt) => {
     bcrypt.hash(password, salt, (err, hashedPassword) => {
       users.create({
           name,
@@ -29,6 +30,7 @@ router.post('/register',(req,res)=>{
           res.json("accout created");
           console.log('userCreated');
         })
+      })
     })
   })
 })
