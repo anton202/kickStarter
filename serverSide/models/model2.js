@@ -6,7 +6,9 @@ title: sequelize.STRING,
 category: sequelize.STRING,
 fundingDurataion: sequelize.INTEGER,
 description: sequelize.TEXT,
-userId: sequelize.INTEGER
+userId: sequelize.INTEGER,
+fundingGoal: sequelize.INTEGER,
+contributedMoney: sequelize.INTEGER
 })
 
 module.exports = projects;

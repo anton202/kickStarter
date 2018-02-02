@@ -26,4 +26,12 @@ export class ServerService {
       return this.http.post('/startProject',{data}).map(res => res.json())
   }
 
+  getAllProject(id){
+    return this.http.get('/viewAll/' +id).map(res => res.json());
+  }
+
+  homePreview(id){
+        return this.http.get('/preview/' +id).map(res => res.json());
+  }
+
 }

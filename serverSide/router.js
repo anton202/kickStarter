@@ -64,9 +64,32 @@ router.post('/login',(req,res)=>{
 
   router.post('/startProject',(req,res)=>{
   console.log(req.body.data)
-  const {Category,foalaEditor,fundingDurataion,img,title} = req.body.data;
-  projects.create({img,title,category:Category,description:foalaEditor,fundingDurataion,userId:req.session.userId}).then(()=>console.log('project created'));
+  const {Category,foalaEditor,fundingDurataion,img,title,fundingGoal} = req.body.data;
+  projects.create({img,title,category:Category,description:foalaEditor,fundingDurataion,userId:req.session.userId,fundingGoal}).then(()=>console.log('project created'));
   res.json("proj created secesfuly");
+})
+
+
+router.get('/viewAll/:id',(req,res)=>{
+  console.log(req.params.id)
+  let category = req.params.id;
+  projects.findAll({where:{category}}).then(data=>{res.json(data);console.log(data)})
+})
+
+
+router.get('/preview/:id',(req,res)=>{
+  
+  let category = req.params.id;
+  projects.findAll({where:{category}}).then(data=>{
+    let arr = data.map(d=>d.toJSON());
+    let nArr = [];
+    console.log(arr[0]);
+    for (var i = 0; i < 3; i++) {
+      if(arr.length !== 0)
+      nArr.push(arr[Math.floor(Math.random()*arr.length)]);
+    }
+    res.json(nArr);
+  })
 })
 
 module.exports = router

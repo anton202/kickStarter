@@ -19,7 +19,8 @@ projStatus
     let that = this;
     reader.onloadend =  function() {
       value.img = reader.result;
-      that.server.createProject(value).subscribe(result=>that.projStatus = result);   
+      console.log(value)
+      that.server.createProject(value).subscribe(result=>that.projStatus = result);
     }
     reader.readAsDataURL(file);
   }

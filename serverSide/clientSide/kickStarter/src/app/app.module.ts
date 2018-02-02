@@ -29,7 +29,7 @@ const routes = [
   { path: 'user', component: UserComponent,canActivate:[IsLogedGuard]},
   { path: 'sign-up', component: SignUpComponent },
   { path: 'start-project', component: StartProjectComponent, canActivate:[IsLogedGuard]},
-  { path: 'view-all', component: ViewAllComponent },
+  { path: 'view-all/:category', component: ViewAllComponent },
   { path: 'view-project', component: ViewProjectComponent }
 ];
 

@@ -1,8 +1,8 @@
 <div class="body">
   <h1>Title</h1>
-  <div class="body_project-preview">
-  <a routerLink="/view-project"> <img src="../assets/water.jpg" alt=""></a> 
-    <p class="body_project-preview__p-title">Project title</p>
+  <div class="body_project-preview" *ngFor="let proj of projectData">
+  <a routerLink="/view-project"> <img src={{proj.img}} alt=""></a>
+    <p class="body_project-preview__p-title">{{proj.title}}</p>
     <hr>
     <ul>
       <li>US$ 8,500 <p>pleged of 10,000$ goal</p> </li>

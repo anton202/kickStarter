@@ -1,12 +1,15 @@
 .body{
-  width: 80%;
+  width: 90%;
   margin: auto;
 }
 
 .body_project-preview{
-  width: 30%;
+  width: 25%;
   margin-top: 60px;
   border: 0.5px solid rgba(0,0,0,0.7);
+  display: inline-block;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 .body_project-preview > ul {
@@ -14,8 +17,11 @@
 }
 
 img{
-  width: 100%;
-  height: 25%;
+  width: 95%;
+  height: 240px;;
+  margin: auto;
+  display: block;
+  margin-top: 10px;
 }
 
 hr{

@@ -1,19 +1,20 @@
 <div class="header">
 <ul>
-    <li (click)="getCategory(cat)" *ngFor="let cat of categorys"><a href="#">{{cat}}</a></li>
+    <li (click)="getCategory(cat)" *ngFor="let cat of categorys">{{cat}}</li>
 </ul>
 </div>
 
 <div class="body">
-  <span> {{category}}</span> <a routerLink="/view-all">View all &#x2192;</a>
-  <div class="body__project-preview">
-  <a routerLink="/view-project"> <img src="" alt=""></a>
+  <div class="">
+   <span> {{category}}</span> <a [routerLink]="['/view-all',category]">View all &#x2192;</a>
+   </div>
+  <div class="body__project-preview" *ngFor="let proj of projects">
+  <a routerLink="/view-project"> <img src={{proj.img}} alt=""></a>
+  <p>{{proj.title}}</p>
     <hr>
     <ul>
-      <li>title</li>
-      <li>funded/goal</li>
-      <li>days left</li>
+      <li>Goal: {{proj.fundingGoal}}$</li>
+      <li>Funded: {{proj.contributedMoney}}$</li>
     </ul>
-
   </div>
 </div>
