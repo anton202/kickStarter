@@ -17,13 +17,13 @@ router.post('/register',(req,res)=>{
   const password = req.body.data.password;
   const email = req.body.data.email;
 
-  users.findAll({where: {email}}).then(data=>{
+    users.findAll({where: {email}}).then(data=>{
     console.log(data.map((d)=>d.toJSON()));
     if(data.length !== 0) return res.json("email already exist")
 
     bcrypt.genSalt(saltRounds, (err, salt) => {
     bcrypt.hash(password, salt, (err, hashedPassword) => {
-      users.create({
+    users.create({
           name,
           password: hashedPassword,
           email
@@ -43,7 +43,7 @@ router.post('/login',(req,res)=>{
   const email = req.body.data.email;
   const password = req.body.data.password;
 
-  users.findAll({where:{email}}).then(async data=>{
+    users.findAll({where:{email}}).then(async data=>{
     let info = await data.map((d)=>d.toJSON());
     console.log(info)
     if(info.length === 0) return res.json("email dose not exist in dataBase");
@@ -52,7 +52,7 @@ router.post('/login',(req,res)=>{
         req.session.userId = info[0].id;
         console.log(req.session);
         return res.json({"message":"secsesfuly loged in",
-      "status":true})
+                        "status":true})
       };
       res.json({"message":"wrong password",
                 "status":false,
@@ -62,7 +62,7 @@ router.post('/login',(req,res)=>{
 })
 
 
-router.post('/startProject',(req,res)=>{
+  router.post('/startProject',(req,res)=>{
   console.log(req.body.data)
   const {Category,foalaEditor,fundingDurataion,img,title} = req.body.data;
   projects.create({img,title,category:Category,description:foalaEditor,fundingDurataion,userId:req.session.userId}).then(()=>console.log('project created'));

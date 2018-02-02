@@ -13,16 +13,17 @@ projStatus
 
   constructor(private server: ServerService) { }
 
-   async encodeImageFileAsURL(element,value) {
+  encodeImageFileAsURL(element,value) {
     var file = element.files[0];
-    var reader = await new FileReader();
-    reader.onloadend = function() {
+    var reader =  new FileReader();
+    let that = this;
+    reader.onloadend =  function() {
       value.img = reader.result;
-      console.log(value)
+      that.server.createProject(value).subscribe(result=>that.projStatus = result);   
     }
     reader.readAsDataURL(file);
-    this.server.createProject(value).subscribe(res=>this.projStatus = res);
   }
+
 
   ngOnInit(){}
 
