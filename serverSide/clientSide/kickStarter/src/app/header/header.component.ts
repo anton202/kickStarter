@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServerService } from '../server.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,13 @@ date = new Date().toLocaleDateString();
 totalUsers = 1000;
 totalProjects = 200;
 monyContributed = '340,000$';
-  constructor() { }
+userName = 'User';
+
+  constructor() {
+
+  }
+
+
 
   ngOnInit() {
   }

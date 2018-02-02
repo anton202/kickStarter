@@ -1,9 +1,12 @@
 <div class="body">
-  <form>
+  <form (ngSubmit)="login(f.value)" #f="ngForm">
     <h2>Login</h2>
-    <input type="email" name="email" placeholder="Email">
-    <input type="password" name="password" placeholder="Password">
-    <button type="submit" name="button">Log me in!</button>
+    <input type="email" name="email" placeholder="Email" ngModel required>
+    <input type="password" name="password" placeholder="Password" ngModel required>
+    <button type="submit" [disabled]="f.invalid" name="button">Log me in!</button>
+    <div class="body_logStatus" *ngIf="loginStatus">
+      {{loginStatus.message}}
+    </div>
     <div class="footer">
       <p>New to kickstarter? <a routerLink="/sign-up">Sign up!</a></p>
     </div>

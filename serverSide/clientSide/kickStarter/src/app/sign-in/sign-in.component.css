@@ -43,3 +43,10 @@ button {
   margin-top: 20px;
   background-color: rgba(241, 238, 234, 0.2)
 }
+
+.body_logStatus{
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  margin-top: 10px;
+}

@@ -5,6 +5,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { ServerService } from './server.service';
+import {IsLogedGuard } from './is-loged.guard';
 
 
 
@@ -25,9 +26,9 @@ const routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: 'main', component: MainComponent },
   { path: 'sign-in', component: SignInComponent},
-  { path: 'user', component: UserComponent},
+  { path: 'user', component: UserComponent,canActivate:[IsLogedGuard]},
   { path: 'sign-up', component: SignUpComponent },
-  { path: 'start-project', component: StartProjectComponent },
+  { path: 'start-project', component: StartProjectComponent, canActivate:[IsLogedGuard]},
   { path: 'view-all', component: ViewAllComponent },
   { path: 'view-project', component: ViewProjectComponent }
 ];
@@ -50,7 +51,7 @@ const routes = [
     BrowserModule,FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),FormsModule,
     RouterModule.forRoot(routes),HttpModule
   ],
-  providers: [ServerService],
+  providers: [ServerService,IsLogedGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

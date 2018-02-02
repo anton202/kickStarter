@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServerService } from '../server.service';
 
 @Component({
   selector: 'app-start-project',
@@ -8,17 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class StartProjectComponent implements OnInit {
 editorContent;
 stratProjectInfo;
+projStatus
 
-  constructor() { }
+  constructor(private server: ServerService) { }
 
-   encodeImageFileAsURL(element,value) {
+   async encodeImageFileAsURL(element,value) {
     var file = element.files[0];
-    var reader = new FileReader();
+    var reader = await new FileReader();
     reader.onloadend = function() {
       value.img = reader.result;
       console.log(value)
     }
     reader.readAsDataURL(file);
+    this.server.createProject(value).subscribe(res=>this.projStatus = res);
   }
 
   ngOnInit(){}

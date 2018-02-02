@@ -5,4 +5,4 @@ const route = require('./router.js')
 app.use(express.static('./clientSide/kickStarter/dist'))
 app.use('/',route);
 
-app.listen(8000, () => console.log('server runing'));
+app.listen(8080, () => console.log('server runing'));
