@@ -9,6 +9,9 @@
     </ul>
     <input type="number" name="contribution" #input placeholder="contribute to project $$$">
     <button type="button" (click)="contribute(input.value)" [disabled]="!isLoged" name="button">Back this project</button>
+    <div *ngIf="contributionStatus">
+      {{contributionStatus}}
+    </div>
   </div>
   <div class="body__project-description">
     <h2>{{projectData[0].title}}</h2>

@@ -16,6 +16,7 @@ export class ViewProjectComponent implements OnInit {
   daysLeft:number;
   daysPast:number;
   isLoged;
+  contributionStatus
 
   constructor(private server: ServerService, private route: ActivatedRoute, private stats:StatsService) {
     this.isLoged = this.server.loginState;
@@ -33,7 +34,7 @@ export class ViewProjectComponent implements OnInit {
    }
 
    contribute(val){
-     this.stats.contribution(val,this.id).subscribe((d)=>console.log(d))
+     this.stats.contribution(val,this.id).subscribe((d)=>this.contributionStatus = d);
    }
 
   ngOnInit() {

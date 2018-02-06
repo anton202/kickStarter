@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StatsService } from '../stats.service';
+import { ServerService} from '../server.service';
 
 
 @Component({
@@ -11,18 +12,19 @@ import { StatsService } from '../stats.service';
 export class HeaderComponent implements OnInit {
 
 date = new Date().toLocaleDateString();
-monyContributed = '340,000$';
 userName = 'User';
 allStats;
 
-  constructor(private stats: StatsService) {
+  constructor(private stats: StatsService, private server:ServerService) {
     stats.getStats().subscribe(data=>{this.allStats = data;console.log(this.allStats)})
+
 
   }
 
 
 
   ngOnInit() {
+    this.server.userSub.subscribe(d=>this.userName = d);
   }
 
 }

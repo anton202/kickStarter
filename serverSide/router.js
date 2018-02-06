@@ -52,7 +52,9 @@ router.post('/login',(req,res)=>{
         req.session.userId = info[0].id;
 
         return res.json({"message":"secsesfuly loged in",
-                        "status":true})
+                        "status":true,
+                        "userName":info[0].name
+                        })
       };
       res.json({"message":"wrong password",
                 "status":false,
@@ -84,20 +86,16 @@ router.get('/viewProject/:id',(req,res)=>{
 
 
 router.get('/preview/:id',(req,res)=>{
-
   let category = req.params.id;
   projects.findAll({where:{category}}).then(data=>{
     let arr = data.map(d=>d.toJSON());
-
     let nArr = [];
     let random = Math.floor(Math.random()*arr.length);
     if(arr.length !== 0){
     for (let i = 0; i < 3; i++) {
       if(arr[random] !== undefined)
       nArr.push(arr[random]);
-
       arr.splice(random,1);
-
     }
   }
     res.json(nArr);
@@ -125,7 +123,7 @@ router.put('/api/contribute',(req,res)=>{
   const contr = +req.body.data;
   const projId = +req.body.id
   projects.findOne({where:{id:projId}}).then(data=>{
-  data.update({contributedMoney: data.contributedMoney + contr}).then(()=>{res.json("Thank you")})
+  data.update({contributedMoney: data.contributedMoney + contr,backers: data.backers +1}).then(()=>{res.json("Thank you")})
 
   })
 })
