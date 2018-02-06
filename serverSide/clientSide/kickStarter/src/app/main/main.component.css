@@ -51,3 +51,7 @@ ul > li{
 hr{
   width: 90%;
 }
+
+.body__project-preview__projcet-title{
+  margin-left: 15px;
+}

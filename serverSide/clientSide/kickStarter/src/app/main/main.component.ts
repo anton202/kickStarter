@@ -13,11 +13,12 @@ export class MainComponent implements OnInit {
   projects;
 
   constructor(private server: ServerService) {
-    server.homePreview(this.category).subscribe(data=>this.projects = data);
+    server.homePreview(this.category).subscribe(data=>{this.projects = data;console.log(this.projects)});
    }
 
   getCategory(value){
     this.category = value;
+    console.log(this.category)
     this.server.homePreview(value).subscribe(data=>this.projects = data);
   }
   ngOnInit() {

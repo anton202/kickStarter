@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServerService } from '../server.service';
 
@@ -11,12 +11,12 @@ import { ServerService } from '../server.service';
 export class ViewAllComponent implements OnInit {
 id;
 projectData;
+
   constructor(private route: ActivatedRoute, private server: ServerService) {
     route.params.subscribe(params => {
        this.id = params['category'];
        console.log(this.id)
     });
-
     server.getAllProject(this.id).subscribe(data=>{this.projectData = data; console.log(data)});
    }
 

@@ -6,9 +6,9 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ServerService {
+  loginState = false;
 
   constructor(private http: Http) { }
-  loginState;
 
   register(data){
     return this.http.post('/register',{data}).map(res => res.json());
@@ -34,4 +34,7 @@ export class ServerService {
         return this.http.get('/preview/' +id).map(res => res.json());
   }
 
+  viewProject(id){
+    return this.http.get('/viewProject/' +id).map(res => res.json());
+  }
 }

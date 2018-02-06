@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { ServerService } from './server.service';
 import {IsLogedGuard } from './is-loged.guard';
-
+import { StatsService } from './stats.service';
 
 
 import { AppComponent } from './app.component';
@@ -30,7 +30,7 @@ const routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'start-project', component: StartProjectComponent, canActivate:[IsLogedGuard]},
   { path: 'view-all/:category', component: ViewAllComponent },
-  { path: 'view-project', component: ViewProjectComponent }
+  { path: 'view-project/:id', component: ViewProjectComponent }
 ];
 
 @NgModule({

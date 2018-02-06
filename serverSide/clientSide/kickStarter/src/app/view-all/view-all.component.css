@@ -6,22 +6,24 @@
 .body_project-preview{
   width: 25%;
   margin-top: 60px;
-  border: 0.5px solid rgba(0,0,0,0.7);
+  border: 1px solid rgba(0,0,0,0.7);
   display: inline-block;
-  margin-right: 30px;
-  margin-left: 30px;
+  margin-right: 100px;
 }
+
+
 
 .body_project-preview > ul {
   list-style: none;
+  padding: 0;
+  margin-left: 15px;
+  line-height: 2;
 }
 
 img{
-  width: 95%;
+  width: 100%;
   height: 240px;;
-  margin: auto;
-  display: block;
-  margin-top: 10px;
+
 }
 
 hr{
@@ -29,5 +31,5 @@ hr{
 }
 
 .body_project-preview__p-title{
-  margin-left: 10%;
+  margin-left: 15px;
 }

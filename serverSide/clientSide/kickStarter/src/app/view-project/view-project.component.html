@@ -1,29 +1,19 @@
 <div class="body">
-  <h1>Revolutenry water Bottel</h1>
-  <img src="../assets/water.jpg" alt="project-pic">
+  <h1>{{projectData[0].title}}</h1>
+  <img src={{projectData[0].img}} alt="project-pic">
   <div class="body__project-stats">
     <ul>
-      <li>US$ 8,500 <p>pleged of 10,000$ goal</p> </li>
-      <li>30 <p>backers</p> </li>
-      <li>20 <p>days to go</p> </li>
+      <li>US$ {{projectData[0].contributedMoney}} <p>pleged of {{projectData[0].fundingGoal}} goal</p> </li>
+      <li>{{projectData[0].backers}} <p>backers</p> </li>
+      <li>{{daysLeft}} <p>days to go</p> </li>
     </ul>
-    <input type="number" name="contribution" placeholder="contribute to project $$$">
-    <button type="button" name="button">Back this project</button>
+    <input type="number" name="contribution" #input placeholder="contribute to project $$$">
+    <button type="button" (click)="contribute(input.value)" [disabled]="!isLoged" name="button">Back this project</button>
   </div>
   <div class="body__project-description">
-    <h2>Project description</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-       incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor</p>in reprehenderit in voluptate velit esse cillum
-         dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat<p> non proident,
-         sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h2>{{projectData[0].title}}</h2>
+  <div [innerHTML]="projectData[0].description">
 
-         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-             quis nostrud </p>exercitation ullamco laboris nisi ut aliquip ex ea commodo
-             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-              dolore eu fugiat nulla pariatur.<p> Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
   </div>
 </div>

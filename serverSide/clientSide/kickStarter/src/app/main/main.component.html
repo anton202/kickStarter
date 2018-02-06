@@ -5,16 +5,17 @@
 </div>
 
 <div class="body">
-  <div class="">
-   <span> {{category}}</span> <a [routerLink]="['/view-all',category]">View all &#x2192;</a>
+  <div>
+   <span [title]="category"> {{category}}</span> <a [routerLink]="['/view-all',category]">View all &#x2192;</a>
    </div>
   <div class="body__project-preview" *ngFor="let proj of projects">
-  <a routerLink="/view-project"> <img src={{proj.img}} alt=""></a>
-  <p>{{proj.title}}</p>
+  <a [routerLink]="['/view-project',proj.id]"> <img src={{proj.img}} alt=""></a>
+  <p class="body__project-preview__projcet-title">{{proj.title}}</p>
     <hr>
     <ul>
       <li>Goal: {{proj.fundingGoal}}$</li>
       <li>Funded: {{proj.contributedMoney}}$</li>
+      <li>Backers: {{proj.backers}}</li>
     </ul>
   </div>
 </div>
