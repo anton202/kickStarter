@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ServerService } from '../server.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { StatsService } from '../stats.service';
 
 
@@ -18,23 +18,30 @@ export class ViewProjectComponent implements OnInit {
   isLoged;
   contributionStatus
 
-  constructor(private server: ServerService, private route: ActivatedRoute, private stats:StatsService) {
+  constructor(private server: ServerService, private route: ActivatedRoute, private stats:StatsService, private router: Router) {
     this.isLoged = this.server.loginState;
     route.params.subscribe(params => {
        this.id = params['id'];
     });
+    this.getData();
 
-    server.viewProject(this.id).subscribe(data=>{this.projectData = data;
-          let date2:any = new Date(data[0].createdAt);
-          let date:any = new Date();
-          this.daysPast = Math.round((date-date2)/86400000);
-          this.daysLeft = data[0].fundingDurataion - this.daysPast;
-
-        });
    }
 
-   contribute(val){
-     this.stats.contribution(val,this.id).subscribe((d)=>this.contributionStatus = d);
+    contribute(val){
+     if(!this.isLoged) return this.router.navigate(['/sign-in']);
+     this.stats.contribution(val,this.id).subscribe((d)=>{
+       this.contributionStatus = d;
+       this.getData();
+     });
+   }
+
+   getData(){
+    this.server.viewProject(this.id).subscribe(data=>{this.projectData = data;
+           let date2:any = new Date(data[0].createdAt);
+           let date:any = new Date();
+           this.daysPast = Math.round((date-date2)/86400000);
+           this.daysLeft = data[0].fundingDurataion - this.daysPast;
+         });
    }
 
   ngOnInit() {

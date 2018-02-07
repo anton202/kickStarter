@@ -8,7 +8,7 @@
       <li>{{daysLeft}} <p>days to go</p> </li>
     </ul>
     <input type="number" name="contribution" #input placeholder="contribute to project $$$">
-    <button type="button" (click)="contribute(input.value)" [disabled]="!isLoged" name="button">Back this project</button>
+    <button type="button" (click)="contribute(input.value)"  name="button">Back this project</button>
     <div *ngIf="contributionStatus">
       {{contributionStatus}}
     </div>

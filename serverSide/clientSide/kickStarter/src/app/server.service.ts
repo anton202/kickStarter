@@ -22,11 +22,11 @@ export class ServerService {
   }
 
   register(data){
-    return this.http.post('/register',{data}).map(res => res.json());
+    return this.http.post('/api/register',{data}).map(res => res.json());
   }
 
   userLogin(data){
-    return this.http.post('/login',{data}).map(res => res.json())
+    return this.http.post('/api/login',{data}).map(res => res.json())
   }
 
   isLoged(){
@@ -34,19 +34,19 @@ export class ServerService {
   }
 
   createProject(data){
-      return this.http.post('/startProject',{data}).map(res => res.json())
+      return this.http.post('/api/startProject',{data}).map(res => res.json())
   }
 
   getAllProject(id){
-    return this.http.get('/viewAll/' +id).map(res => res.json());
+    return this.http.get('/api/viewAll/' +id).map(res => res.json());
   }
 
   homePreview(id){
-        return this.http.get('/preview/' +id).map(res => res.json());
+        return this.http.get('/api/preview/' +id).map(res => res.json());
   }
 
   viewProject(id){
-    return this.http.get('/viewProject/' +id).map(res => res.json());
+    return this.http.get('/api/viewProject/' +id).map(res => res.json());
   }
 
   getUserProjects(){

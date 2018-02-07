@@ -8,10 +8,10 @@ const bcrypt = require('bcrypt');
 
 const saltRounds = 10;
 
-router.use(bodyParser.json());
+router.use(bodyParser({limit: '50mb'}));
 router.use(session({secret:'keyboard cat'}));
 
-router.post('/register',(req,res)=>{
+router.post('/api/register',(req,res)=>{
 
   const name = req.body.data.name;
   const password = req.body.data.password;
@@ -38,7 +38,7 @@ router.post('/register',(req,res)=>{
 })
 
 
-router.post('/login',(req,res)=>{
+router.post('/api/login',(req,res)=>{
 
   const email = req.body.data.email;
   const password = req.body.data.password;
@@ -65,7 +65,7 @@ router.post('/login',(req,res)=>{
 })
 
 
-  router.post('/startProject',(req,res)=>{
+  router.post('/api/startProject',(req,res)=>{
 
   const {Category,foalaEditor,fundingDurataion,img,title,fundingGoal} = req.body.data;
   projects.create({img,title,category:Category,description:foalaEditor,fundingDurataion,userId:req.session.userId,fundingGoal}).then(()=>console.log('project created'));
@@ -73,33 +73,38 @@ router.post('/login',(req,res)=>{
 })
 
 
-router.get('/viewAll/:id',(req,res)=>{
+router.get('/api/viewAll/:id',(req,res)=>{
 
   let category = req.params.id;
   projects.findAll({where:{category}}).then(data=>{res.json(data);console.log(data)})
 })
 
 
-router.get('/viewProject/:id',(req,res)=>{
+router.get('/api/viewProject/:id',(req,res)=>{
   let id = req.params.id;
   projects.findAll({where:{id}}).then(data=>{res.json(data);console.log(data)})
 })
 
 
-router.get('/preview/:id',(req,res)=>{
+router.get('/api/preview/:id',(req,res)=>{
   let category = req.params.id;
-  projects.findAll({where:{category}}).then(data=>{
-    let arr = data.map(d=>d.toJSON());
-    let nArr = [];
-    let random = Math.floor(Math.random()*arr.length);
-    if(arr.length !== 0){
-    for (let i = 0; i < 3; i++) {
-      if(arr[random] !== undefined)
-      nArr.push(arr[random]);
-      arr.splice(random,1);
-    }
-  }
-    res.json(nArr);
+  projects.findAll({where:{category}}).then( data=>{
+   let arr = data.map(d=>d.toJSON());
+   if(arr.length === 3 || arr.length < 3 || arr.length === 0) return res.json(arr)
+   if(arr.length > 3){
+     let numArr = [];
+     let nArr = [];
+     for (var i = 0; 3 > numArr.length; i++) {
+       let random = Math.floor(Math.random()*arr.length);
+       if(numArr.indexOf(random) === -1){
+         numArr.push(random);
+       }
+     }
+     for (var i = 0; i < 3; i++) {
+       nArr.push(arr[numArr[i]]);
+     }
+     res.json(nArr);
+   }
   })
 })
 
