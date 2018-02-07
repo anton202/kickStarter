@@ -53,7 +53,8 @@ router.post('/login',(req,res)=>{
 
         return res.json({"message":"secsesfuly loged in",
                         "status":true,
-                        "userName":info[0].name
+                        "userName":info[0].name,
+                        "userId":info[0].id
                         })
       };
       res.json({"message":"wrong password",
@@ -119,6 +120,7 @@ router.get('/api',async (req,res)=>{
   res.json(stats);
 })
 
+
 router.put('/api/contribute',(req,res)=>{
   const contr = +req.body.data;
   const projId = +req.body.id
@@ -128,5 +130,21 @@ router.put('/api/contribute',(req,res)=>{
   })
 })
 
+
+router.get('/api/userArea',(req,res)=>{
+  projects.findAll({where:{userId:req.session.userId}}).then(data=>{
+    let info = data.map(d=>d.toJSON());
+    console.log(info);
+    res.json(info)});
+})
+
+
+router.delete('/api/deletProject/:id',(req,res)=>{
+  let projId = req.params.id;
+  projects.findOne({where:{id:projId}}).then(data=>{
+    data.destroy();
+    res.json(true);
+  })
+})
 
 module.exports = router

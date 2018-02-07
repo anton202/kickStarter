@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../server.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,10 +9,14 @@ import { ServerService } from '../server.service';
 })
 export class SignUpComponent implements OnInit {
   registerStaus;
-  constructor(private server:ServerService) { }
+  constructor(private server:ServerService, private router:Router) { }
 
   userInfo(data){
-    this.server.register(data).subscribe((data)=>this.registerStaus = data);
+    this.server.register(data).subscribe((data)=>{
+      this.registerStaus = data;
+      if(data) this.router.navigate(['/sign-in']);
+    });
+
   }
 
   ngOnInit() {

@@ -1,6 +1,6 @@
 <div class="body">
-  <h1>name: project</h1>
+  <h1>{{userName}}'s projects</h1>
   <ul>
-    <li>project name <button>Delete</button></li>
+    <li *ngFor="let proj of userProjects"> {{proj.title}} <button (click)="delete(proj.id)">Delete</button></li>
   </ul>
 </div>

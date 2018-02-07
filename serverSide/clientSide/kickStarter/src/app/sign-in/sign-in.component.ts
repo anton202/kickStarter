@@ -15,6 +15,7 @@ export class SignInComponent implements OnInit {
     this.server.userLogin(data).subscribe(res=>{this.loginStatus = res;
     this.server.loginState = res.status;
     this.server.userName = res.userName;
+    this.server.userId = res.userId;
     if(res.status) this.router.navigate(['/main']);
   })
   }

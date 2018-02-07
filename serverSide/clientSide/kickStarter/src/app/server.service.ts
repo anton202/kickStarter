@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 export class ServerService {
   loginState = false;
   userName;
+  userId;
   userSub:Subject<string> = new Subject();
 
   constructor(private http: Http) {
@@ -46,5 +47,13 @@ export class ServerService {
 
   viewProject(id){
     return this.http.get('/viewProject/' +id).map(res => res.json());
+  }
+
+  getUserProjects(){
+    return this.http.get('/api/userArea').map(res => res.json());
+  }
+
+  deleteProject(id){
+    return this.http.delete('/api/deletProject/'+id).map(res => res.json());
   }
 }
