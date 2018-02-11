@@ -55,3 +55,9 @@ button{
 .body__project-description{
   margin-top: 100px;
 }
+
+.contributionStatus{
+  width: 80%;
+  margin: auto;
+  margin-top: 25px;
+}

@@ -11,12 +11,14 @@ import { StatsService } from '../stats.service';
   providers: [StatsService]
 })
 export class ViewProjectComponent implements OnInit {
-  projectData;
+  projectData = {};
   id;
   daysLeft:number;
   daysPast:number;
   isLoged;
-  contributionStatus
+  contributionStatus;
+  contributedMoney;
+  backers;
 
   constructor(private server: ServerService, private route: ActivatedRoute, private stats:StatsService, private router: Router) {
     this.isLoged = this.server.loginState;
@@ -36,11 +38,14 @@ export class ViewProjectComponent implements OnInit {
    }
 
    getData(){
-    this.server.viewProject(this.id).subscribe(data=>{this.projectData = data;
-           let date2:any = new Date(data[0].createdAt);
+    this.server.viewProject(this.id).subscribe(data=>{this.projectData = data.projectData;
+           this.contributedMoney = data.contributedMoney;
+           this.backers = data.backers;
+           console.log(data);
+           let date2:any = new Date(data.projectData.createdAt);
            let date:any = new Date();
            this.daysPast = Math.round((date-date2)/86400000);
-           this.daysLeft = data[0].fundingDurataion - this.daysPast;
+           this.daysLeft = data.projectData.fundingDurataion - this.daysPast;
          });
    }
 

@@ -8,7 +8,7 @@ fundingDurataion: sequelize.INTEGER,
 description: sequelize.TEXT,
 userId: sequelize.INTEGER,
 fundingGoal: sequelize.INTEGER,
-contributedMoney: sequelize.INTEGER,
+
 backers: sequelize.INTEGER
 })
 

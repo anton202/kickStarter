@@ -22,11 +22,11 @@ export class ServerService {
   }
 
   register(data){
-    return this.http.post('/api/register',{data}).map(res => res.json());
+    return this.http.post('/api/user/register',{data}).map(res => res.json());
   }
 
   userLogin(data){
-    return this.http.post('/api/login',{data}).map(res => res.json())
+    return this.http.post('/api/user/login',{data}).map(res => res.json())
   }
 
   isLoged(){
@@ -34,26 +34,26 @@ export class ServerService {
   }
 
   createProject(data){
-      return this.http.post('/api/startProject',{data}).map(res => res.json())
+      return this.http.post('/api/general/startProject',{data}).map(res => res.json())
   }
 
   getAllProject(id){
-    return this.http.get('/api/viewAll/' +id).map(res => res.json());
+    return this.http.get('/api/general/viewAll/' +id).map(res => res.json());
   }
 
   homePreview(id){
-        return this.http.get('/api/preview/' +id).map(res => res.json());
+        return this.http.get('/api/general/preview/' +id).map(res => res.json());
   }
 
   viewProject(id){
-    return this.http.get('/api/viewProject/' +id).map(res => res.json());
+    return this.http.get('/api/general/viewProject/' +id).map(res => res.json());
   }
 
   getUserProjects(){
-    return this.http.get('/api/userArea').map(res => res.json());
+    return this.http.get('/api/user/userArea').map(res => res.json());
   }
 
   deleteProject(id){
-    return this.http.delete('/api/deletProject/'+id).map(res => res.json());
+    return this.http.delete('/api/general/deletProject/'+id).map(res => res.json());
   }
 }

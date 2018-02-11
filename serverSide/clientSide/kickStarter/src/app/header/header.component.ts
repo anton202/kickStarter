@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
 date = new Date().toLocaleDateString();
 userName = 'User';
-allStats;
+allStats = {};
 
   constructor(private stats: StatsService, private server:ServerService) {
     stats.getStats().subscribe(data=>{this.allStats = data;console.log(this.allStats)})

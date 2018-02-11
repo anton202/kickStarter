@@ -1,21 +1,21 @@
 <div class="body">
-  <h1>{{projectData[0].title}}</h1>
-  <img src={{projectData[0].img}} alt="project-pic">
+  <h1>{{projectData.title}}</h1>
+  <img src={{projectData.img}} alt="project-pic">
   <div class="body__project-stats">
     <ul>
-      <li>US$ {{projectData[0].contributedMoney}} <p>pleged of {{projectData[0].fundingGoal}} goal</p> </li>
-      <li>{{projectData[0].backers}} <p>backers</p> </li>
+      <li>US$ {{contributedMoney}} <p>pleged of {{projectData.fundingGoal}} goal</p> </li>
+      <li>{{backers}} <p>backers</p> </li>
       <li>{{daysLeft}} <p>days to go</p> </li>
     </ul>
     <input type="number" name="contribution" #input placeholder="contribute to project $$$">
     <button type="button" (click)="contribute(input.value)"  name="button">Back this project</button>
-    <div *ngIf="contributionStatus">
+    <div class="contributionStatus" *ngIf="contributionStatus">
       {{contributionStatus}}
     </div>
   </div>
   <div class="body__project-description">
-    <h2>{{projectData[0].title}}</h2>
-  <div [innerHTML]="projectData[0].description">
+    <h2>{{projectData.title}}</h2>
+  <div [innerHTML]="projectData.description">
 
   </div>
   </div>
