@@ -14,6 +14,7 @@ projStatus
   constructor(private server: ServerService) { }
 
   encodeImageFileAsURL(element,value) {
+    try{
     var file = element.files[0];
     var reader =  new FileReader();
     let that = this;
@@ -23,6 +24,7 @@ projStatus
       that.server.createProject(value).subscribe(result=>that.projStatus = result);
     }
     reader.readAsDataURL(file);
+  }catch(err){this.projStatus = "somthing went wrong, make shure all the fields are filled as required"}
   }
 
 
