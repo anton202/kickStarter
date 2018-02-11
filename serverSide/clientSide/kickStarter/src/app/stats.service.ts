@@ -13,6 +13,6 @@ export class StatsService {
   }
 
   contribution(data,id){
-    return this.http.put('/api/general/contribute',{data,id}).map(res => res.json());
+    return this.http.put('/api/user/contribute',{data,id}).map(res => res.json());
   }
 }

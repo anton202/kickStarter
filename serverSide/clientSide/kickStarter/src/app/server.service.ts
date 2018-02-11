@@ -34,7 +34,7 @@ export class ServerService {
   }
 
   createProject(data){
-      return this.http.post('/api/general/startProject',{data}).map(res => res.json())
+      return this.http.post('/api/user/startProject',{data}).map(res => res.json())
   }
 
   getAllProject(id){
@@ -54,6 +54,6 @@ export class ServerService {
   }
 
   deleteProject(id){
-    return this.http.delete('/api/general/deletProject/'+id).map(res => res.json());
+    return this.http.delete('/api/user/deletProject/'+id).map(res => res.json());
   }
 }

@@ -2,8 +2,9 @@ const express = require('express')
 const router = express.Router()
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const users = require('../models/model.js');
-const projects = require('../models/model2.js')
+const users = require('../models/user.js');
+const projects = require('../models/projects.js')
+const contributedMoney = require('../models/contributedMoney.js');
 const bcrypt = require('bcrypt');
 
 const saltRounds = 10;
@@ -71,5 +72,28 @@ router.get('/userArea',(req,res)=>{
     console.log(info);
     res.json(info)});
 })
+
+
+router.post('/startProject',(req,res)=>{
+const {Category,foalaEditor,fundingDurataion,img,title,fundingGoal} = req.body.data;
+projects.create({img,title,category:Category,description:foalaEditor,fundingDurataion,userId:req.session.userId,fundingGoal}).then(()=>console.log('project created'));
+res.json("proj created secesfuly");
+})
+
+
+router.put('/contribute',(req,res)=>{
+  const contr = +req.body.data;
+  const projId = +req.body.id
+  contributedMoney.create({amount:contr,projId,userId:req.session.userId}).then(()=>res.json('Thank you'));
+  })
+
+
+  router.delete('/deletProject/:id',(req,res)=>{
+    let projId = req.params.id;
+    projects.findOne({where:{id:projId}}).then(data=>{
+      data.destroy();
+      res.json(true);
+    })
+  })
 
 module.exports = router;
