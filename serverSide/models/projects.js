@@ -8,8 +8,6 @@ fundingDurataion: sequelize.INTEGER,
 description: sequelize.TEXT,
 userId: sequelize.INTEGER,
 fundingGoal: sequelize.INTEGER,
-
-backers: sequelize.INTEGER
 })
 
 module.exports = projects;

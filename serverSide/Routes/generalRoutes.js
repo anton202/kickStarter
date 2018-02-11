@@ -5,8 +5,7 @@ const bodyParser = require('body-parser');
 const projects = require('../models/projects.js')
 const contributedMoney = require('../models/contributedMoney.js');
 
-  router.use(bodyParser({limit: '50mb'}));
-
+router.use(bodyParser({limit: '50mb'}));
 
 router.get('/viewAll/:id',(req,res)=>{
   let category = req.params.id;
@@ -34,23 +33,27 @@ router.get('/viewProject/:id',async (req,res)=>{
 
 
 router.get('/preview/:id',(req,res)=>{
-  let category = req.params.id;
-  projects.findAll({where:{category}}).then( data=>{
+   let category = req.params.id;
+   projects.findAll({where:{category}}).then( async data=>{
    let arr = data.map(d=>d.toJSON());
    if(arr.length === 3 || arr.length < 3 || arr.length === 0) return res.json(arr)
    if(arr.length > 3){
-     let numArr = [];
+     let set = new Set();
      let nArr = [];
-     for (var i = 0; 3 > numArr.length; i++) {
-       let random = Math.floor(Math.random()*arr.length);
-       if(numArr.indexOf(random) === -1){
-         numArr.push(random);
-       }
+     function randomNum(){
+       if(set.size === 3) return set ;
+       set.add(Math.floor(Math.random()*arr.length));
+       randomNum();
      }
-     for (var i = 0; i < 3; i++) {
-       nArr.push(arr[numArr[i]]);
-     }
-     res.json(nArr);
+    randomNum();
+    for(let value of set) nArr.push(arr[value]);
+    for(let val of nArr){
+       await contributedMoney.findAll({where:{projId:val.id}}).then( data=>{
+        val.contributedMoney = data.reduce((a,c)=>a+c.amount,0);
+        val.backers = data.length;
+      })
+    }
+    res.json(nArr);
    }
   })
 })
