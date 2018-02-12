@@ -63,5 +63,13 @@ button{
     color:white;
     height: 35px;
     font-size: 16px;
+}
 
+.fr-box{
+  margin-top: 50px;
+}
+
+.projDes{
+  margin-top: 15px;
+  margin-bottom: 20px;
 }

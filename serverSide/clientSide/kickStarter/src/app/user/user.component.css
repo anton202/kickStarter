@@ -6,7 +6,7 @@
 
 ul{
   width: 60%;
-  margin: auto;
+  list-style: none;
   padding: 0;
   line-height: 2.5;
 }
