@@ -31,7 +31,6 @@ router.post('/register',(req,res)=>{
         })
         .then(() => {
           res.json("accout created");
-
         })
       })
     })

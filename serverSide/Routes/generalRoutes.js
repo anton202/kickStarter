@@ -26,7 +26,9 @@ router.get('/viewProject/:id',async (req,res)=>{
 
     let totalMoney = await data.reduce((a,c)=>a+c.amount,0);
     obj.contributedMoney = totalMoney;
-    obj.backers = data.length;
+    let backers = new Set();
+    await data.map(x=>backers.add(x.userId));
+    obj.backers = backers.size;
     return res.json(obj);
   })
 })
@@ -48,9 +50,11 @@ router.get('/preview/:id',(req,res)=>{
     randomNum();
     for(let value of set) nArr.push(arr[value]);
     for(let val of nArr){
-       await contributedMoney.findAll({where:{projId:val.id}}).then( data=>{
+       await contributedMoney.findAll({where:{projId:val.id}}).then(async data=>{
         val.contributedMoney = data.reduce((a,c)=>a+c.amount,0);
-        val.backers = data.length;
+        let backers = new Set();
+      await data.map(x=>backers.add(x.userId));
+        val.backers = backers.size;
       })
     }
     res.json(nArr);

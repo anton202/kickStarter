@@ -14,7 +14,7 @@ export class SignUpComponent implements OnInit {
   userInfo(data){
     this.server.register(data).subscribe((data)=>{
       this.registerStaus = data;
-      if(data) this.router.navigate(['/sign-in']);
+      setTimeout(()=>this.router.navigate(['/sign-in']),1000);
     });
 
   }
