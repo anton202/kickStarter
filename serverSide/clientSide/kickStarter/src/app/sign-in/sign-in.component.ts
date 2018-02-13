@@ -12,11 +12,13 @@ export class SignInComponent implements OnInit {
   constructor(private server:ServerService, private router:Router) { }
 
   login(data){
-    this.server.userLogin(data).subscribe(res=>{this.loginStatus = res;
-    this.server.loginState = res.status;
-    this.server.userName = res.userName;
-    this.server.userId = res.userId;
-    if(res.status) this.router.navigate(['/main']);
+    this.server.userLogin(data).subscribe(res=>{
+    if(!res.status)
+    return this.loginStatus = res.message;
+
+    setTimeout(()=>this.router.navigate(['/main']),1000);
+    this.loginStatus = res.message;
+    this.server.userSub.next(res.userName);
   })
   }
 
@@ -24,3 +26,10 @@ export class SignInComponent implements OnInit {
   }
 
 }
+
+
+
+
+/*this.server.loginState = res.status;
+this.server.userName = res.userName;
+this.server.userId = res.userId;*/

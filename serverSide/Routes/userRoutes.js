@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bodyParser = require('body-parser');
-const session = require('express-session');
+//const session = require('express-session');
 const users = require('../models/user.js');
 const projects = require('../models/projects.js')
 const contributedMoney = require('../models/contributedMoney.js');
@@ -11,7 +11,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 router.use(bodyParser({limit: '50mb'}));
-router.use(session({secret:'keyboard cat'}));
+//router.use(session({secret:'keyboard cat'}));
 
 router.post('/register',(req,res)=>{
 
@@ -20,7 +20,6 @@ router.post('/register',(req,res)=>{
   const email = req.body.data.email;
 
     users.findAll({where: {email}}).then(data=>{
-
     if(data.length !== 0) return res.json("email already exist")
 
     bcrypt.genSalt(saltRounds, (err, salt) => {
@@ -52,6 +51,7 @@ router.post('/login',(req,res)=>{
     bcrypt.compare(password, info[0].password, (err, isValid) => {
       if (isValid === true) {
         req.session.userId = info[0].id;
+        req.session.user = info[0];
 
         return res.json({"message":"secsesfuly loged in",
                         "status":true,
@@ -67,6 +67,10 @@ router.post('/login',(req,res)=>{
 })
 
 
+router.get('/isLoged',(req,res)=>{
+  res.json(req.session.user? {session:req.session.user,status:true}: false);
+})
+
 router.get('/userArea',(req,res)=>{
   projects.findAll({where:{userId:req.session.userId}}).then(data=>{
     let info = data.map(d=>d.toJSON());
@@ -77,10 +81,8 @@ router.get('/userArea',(req,res)=>{
 
 router.post('/startProject',(req,res)=>{
 const {Category,foalaEditor,fundingDurataion,img,title,fundingGoal} = req.body.data;
-
 projects.create({img,title,category:Category,description:foalaEditor,fundingDurataion,userId:req.session.userId,fundingGoal})
 .then(()=> res.json("proj created secesfuly")).catch((err)=>res.json("somthing went wrong.make shure that the img your'e trying to uplod is under the limit mentiond above"));
-
 })
 
 

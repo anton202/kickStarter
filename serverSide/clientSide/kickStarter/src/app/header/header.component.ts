@@ -22,6 +22,9 @@ allStats = {};
 
   ngOnInit() {
     this.server.userSub.subscribe(d=>this.userName = d);
+    this.server.isLoged().subscribe(res=>{
+      if(res.status) return this.server.userSub.next(res.session.name);
+    })
   }
 
 }

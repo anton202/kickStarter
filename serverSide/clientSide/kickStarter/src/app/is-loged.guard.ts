@@ -10,10 +10,18 @@ export class IsLogedGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if(!this.server.isLoged()){
-    this.router.navigate(['/sign-in'])
-    return false;
-  }
-  return true;
+      this.server.isLoged().subscribe((res)=>{
+        if(!res.status)
+        this.router.navigate(['/sign-in'])
+        return false;
+      })
+    return true;
 }
 }
+
+
+/*if(!this.server.isLoged()){
+this.router.navigate(['/sign-in'])
+return false;
+}
+return true;*/

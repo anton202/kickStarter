@@ -7,19 +7,9 @@ import { Subject } from 'rxjs';
 
 @Injectable()
 export class ServerService {
-  loginState = false;
-  userName;
-  userId;
   userSub:Subject<string> = new Subject();
 
-  constructor(private http: Http) {
-    this.changeUserName();
-    }
-
-  changeUserName(){
-    if(!this.loginState) return setTimeout(this.changeUserName.bind(this),500);
-    return this.userSub.next(this.userName);
-  }
+  constructor(private http: Http) {}
 
   register(data){
     return this.http.post('/api/user/register',{data}).map(res => res.json());
@@ -30,7 +20,7 @@ export class ServerService {
   }
 
   isLoged(){
-    return this.loginState;
+    return this.http.get('/api/user/isLoged').map(res => res.json());
   }
 
   createProject(data){

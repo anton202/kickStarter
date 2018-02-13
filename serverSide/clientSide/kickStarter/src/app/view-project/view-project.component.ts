@@ -15,13 +15,11 @@ export class ViewProjectComponent implements OnInit {
   id;
   daysLeft:number;
   daysPast:number;
-  isLoged;
   contributionStatus;
   contributedMoney;
   backers;
 
   constructor(private server: ServerService, private route: ActivatedRoute, private stats:StatsService, private router: Router) {
-    this.isLoged = this.server.loginState;
     route.params.subscribe(params => {
        this.id = params['id'];
     });
@@ -30,7 +28,10 @@ export class ViewProjectComponent implements OnInit {
    }
 
     contribute(val){
-     if(!this.isLoged) return this.router.navigate(['/sign-in']);
+     this.server.isLoged().subscribe(res=>{
+     if(!res.status)
+     return this.router.navigate(['/sign-in']);
+   })
      this.stats.contribution(val,this.id).subscribe((d)=>{
        this.contributionStatus = d;
        this.getData();

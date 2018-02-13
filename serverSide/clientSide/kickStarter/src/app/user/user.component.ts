@@ -9,10 +9,10 @@ import { ServerService } from '../server.service';
 export class UserComponent implements OnInit {
   userProjects;
   userName;
-  
+
   constructor(private server: ServerService) {
       server.getUserProjects().subscribe(d=>this.userProjects = d);
-      this.userName = server.userName;
+      server.userSub.subscribe(res=>this.userName = res)
    }
 
 
