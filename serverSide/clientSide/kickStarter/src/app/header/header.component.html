@@ -1,7 +1,7 @@
 <div class="header">
 <a class="header__start-project" routerLink="/start-project">Start Project</a>
 <a routerLink="/main"> <img src="../assets/kickstarter-logo.png" alt="logo"></a>
-<a class="header__sign-in" routerLink="/sign-in">Sign In</a>
+<a class="header__sign-in" routerLink="/sign-in" (click)="signOut()">{{signInOut}}</a>
 <a class="header__user"routerLink="/user" *ngIf="userName">{{userName}}</a>
 </div>
 

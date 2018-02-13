@@ -19,6 +19,7 @@ export class SignInComponent implements OnInit {
     setTimeout(()=>this.router.navigate(['/main']),1000);
     this.loginStatus = res.message;
     this.server.userSub.next(res.userName);
+    this.server.signOut.next(true);
   })
   }
 

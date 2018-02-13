@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 @Injectable()
 export class ServerService {
   userSub:Subject<string> = new Subject();
+  signOut:Subject<boolean> = new Subject();
 
   constructor(private http: Http) {}
 
@@ -21,6 +22,10 @@ export class ServerService {
 
   isLoged(){
     return this.http.get('/api/user/isLoged').map(res => res.json());
+  }
+
+  logOut(){
+    return this.http.get('/api/user/logOut');
   }
 
   createProject(data){

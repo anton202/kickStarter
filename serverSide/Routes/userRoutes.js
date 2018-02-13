@@ -70,6 +70,12 @@ router.get('/isLoged',(req,res)=>{
   res.json(req.session.user? {session:req.session.user,status:true}: false);
 })
 
+router.get('/logOut',(req,res)=>{
+  req.session.user = "";
+  req.session.userId = "";
+  res.sendStatus(204);
+})
+
 router.get('/userArea',(req,res)=>{
   projects.findAll({where:{userId:req.session.userId}}).then(data=>{
     let info = data.map(d=>d.toJSON());
