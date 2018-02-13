@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const bodyParser = require('body-parser');
-//const session = require('express-session');
 const users = require('../models/user.js');
 const projects = require('../models/projects.js')
 const contributedMoney = require('../models/contributedMoney.js');
@@ -11,7 +10,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 router.use(bodyParser({limit: '50mb'}));
-//router.use(session({secret:'keyboard cat'}));
+
 
 router.post('/register',(req,res)=>{
 

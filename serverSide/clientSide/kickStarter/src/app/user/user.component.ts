@@ -12,7 +12,7 @@ export class UserComponent implements OnInit {
 
   constructor(private server: ServerService) {
       server.getUserProjects().subscribe(d=>this.userProjects = d);
-      server.userSub.subscribe(res=>this.userName = res)
+      //server.userSub.subscribe(res=>this.userName = res)
    }
 
 
