@@ -2,11 +2,13 @@ const express = require('express');
 const app = express();
 const generalRoutes = require('./Routes/generalRoutes.js')
 const userRoutes = require('./Routes/userRoutes.js')
+const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
 
 app.use(express.static('./clientSide/kickStarter/dist'))
 app.use(session({secret:'keyboard cat',saveUninitialized: true}));
+app.use(bodyParser({limit: '50mb'}));
 
 app.use('/api/general',generalRoutes);
 app.use('/api/user',userRoutes);

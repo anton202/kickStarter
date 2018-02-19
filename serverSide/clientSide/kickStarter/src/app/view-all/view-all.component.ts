@@ -17,7 +17,7 @@ projectData;
        this.id = params['category'];
        console.log(this.id)
     });
-    server.getAllProject(this.id).subscribe(data=>{this.projectData = data; console.log(data)});
+    server.getAllProject(this.id).subscribe(data=>this.projectData = data);
    }
 
   ngOnInit() {

@@ -39,14 +39,13 @@ export class ViewProjectComponent implements OnInit {
    }
 
    getData(){
-    this.server.viewProject(this.id).subscribe(data=>{this.projectData = data.projectData;
+    this.server.viewProject(this.id).subscribe(data=>{this.projectData = data;
            this.contributedMoney = data.contributedMoney;
            this.backers = data.backers;
-           console.log(data);
-           let date2:any = new Date(data.projectData.createdAt);
+           let date2:any = new Date(data.createdAt);
            let date:any = new Date();
            this.daysPast = Math.round((date-date2)/86400000);
-           this.daysLeft = data.projectData.fundingDurataion - this.daysPast;
+           this.daysLeft = data.fundingDurataion - this.daysPast;
          });
    }
 

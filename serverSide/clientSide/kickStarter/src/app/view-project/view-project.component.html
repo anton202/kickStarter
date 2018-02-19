@@ -3,8 +3,8 @@
   <img src={{projectData.img}} alt="project-pic">
   <div class="body__project-stats">
     <ul>
-      <li>US$ {{contributedMoney}} <p>pleged of {{projectData.fundingGoal}} goal</p> </li>
-      <li>{{backers}} <p>backers</p> </li>
+      <li>US$ {{projectData.totalAmountContributed}} <p>pleged of {{projectData.fundingGoal}} goal</p> </li>
+      <li>{{projectData.totalBackers}} <p>backers</p> </li>
       <li>{{daysLeft}} <p>days to go</p> </li>
     </ul>
     <input type="number" name="contribution" #input placeholder="contribute to project $$$">

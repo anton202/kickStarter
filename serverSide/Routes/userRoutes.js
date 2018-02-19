@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const bodyParser = require('body-parser');
 const users = require('../models/user.js');
 const projects = require('../models/projects.js')
 const contributedMoney = require('../models/contributedMoney.js');
@@ -8,9 +7,6 @@ const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
 
 const saltRounds = 10;
-
-router.use(bodyParser({limit: '50mb'}));
-
 
 router.post('/register',(req,res)=>{
 
@@ -92,8 +88,8 @@ projects.create({img,title,category:Category,description:foalaEditor,fundingDura
 
 router.put('/contribute',(req,res)=>{
   const contr = +req.body.data;
-  const projId = +req.body.id
-  contributedMoney.create({amount:contr,projId,userId:req.session.userId}).then(()=>res.json('Thank you'));
+  const projectId = +req.body.id
+  contributedMoney.create({amount:contr,projectId,userId:req.session.userId}).then(()=>res.json('Thank you'));
   })
 
 
