@@ -6,22 +6,32 @@ const contributedMoney = require('../models/contributedMoney.js');
 
 
 router.get('/viewAll/:id',(req,res)=>{
-  let category = req.params.id;
-  projects.findAll({where:{category} ,include:[{model:contributedMoney}]}).then(allProjects=>{
-    let data = allProjects.map(d=>d.toJSON());
+const category = req.params.id;
 
-     data.map((c)=>{
-      let totalMoney = 0;
-      let backers = new Set();
-        c.contributedMoneys.map((c)=>{
-         backers.add(c.userId);
-         totalMoney += c.amount;
-       })
-       c.backers = backers.size;
-       c.totalMoney = totalMoney;
-     })
-    res.json(data);
-  });
+projects.findAll({where:{category},include:[{model:contributedMoney}]})
+ .then(projects => {
+    projects = projects.map(project => project.toJSON());
+
+    projects.forEach(project =>{
+        if(project.contributedMoneys.length === 0 ){
+         project.totalAmountContributed = 0
+         project.backers = 0;
+         return;
+       }
+
+        project.totalAmountContributed = project.contributedMoneys.reduce((sum,contributer) =>{
+          return sum + contributer.amount;
+        },0)
+
+        let backers = new Set();
+        project.contributedMoneys.forEach(contribution =>{
+          backers.add(contribution.userId)
+        })
+
+        project.backers = backers.size;
+      })
+      res.json(projects);
+  })
 })
 
 
@@ -38,8 +48,8 @@ router.get('/viewProject/:id',(req,res)=>{
     },0);
 
     const backers = new Set();
-    project.contributedMoneys.forEach((backer)=>backers.add(backer.userId));
-    project.totalBackers = backers.size;
+    project.contributedMoneys.forEach((contribution)=>backers.add(contribution.userId));
+    project.backers = backers.size;
 
     res.json(project);
   });

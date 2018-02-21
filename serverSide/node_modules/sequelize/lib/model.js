@@ -994,7 +994,10 @@ class Model {
 
       if (definition.hasOwnProperty('unique') && definition.unique) {
         let idxName;
-        if (typeof definition.unique === 'object' && definition.unique.hasOwnProperty('name')) {
+        if (
+          typeof definition.unique === 'object' &&
+          definition.unique.hasOwnProperty('name')
+        ) {
           idxName = definition.unique.name;
         } else if (typeof definition.unique === 'string') {
           idxName = definition.unique;
@@ -1002,12 +1005,13 @@ class Model {
           idxName = this.tableName + '_' + name + '_unique';
         }
 
-        let idx = this.options.uniqueKeys[idxName] || { fields: [] };
-        idx = idx || {fields: [], msg: null};
+        const idx = this.options.uniqueKeys[idxName] || { fields: [] };
+
         idx.fields.push(definition.field);
         idx.msg = idx.msg || definition.unique.msg || null;
         idx.name = idxName || false;
         idx.column = name;
+        idx.customIndex = definition.unique !== true;
 
         this.options.uniqueKeys[idxName] = idx;
       }
@@ -1025,6 +1029,7 @@ class Model {
         delete definition.index;
       }
     });
+
     // Create a map of field to attribute names
     this.fieldAttributeMap = _.reduce(this.fieldRawAttributesMap, (map, value, key) => {
       if (key !== value.fieldName) {
@@ -1174,7 +1179,7 @@ class Model {
       })
       .then(() => this.QueryInterface.showIndex(this.getTableName(options), options))
       .then(indexes => {
-      // Assign an auto-generated name to indexes which are not named by the user
+        // Assign an auto-generated name to indexes which are not named by the user
         this.options.indexes = this.QueryInterface.nameIndexes(this.options.indexes, this.tableName);
 
         indexes = _.filter(this.options.indexes, item1 =>
@@ -1664,7 +1669,7 @@ class Model {
           }, []),
           _.assign(
             {},
-            _.omit(options, 'include', 'attributes', 'order', 'where', 'limit', 'plain', 'scope'),
+            _.omit(options, 'include', 'attributes', 'order', 'where', 'limit', 'offset', 'plain', 'scope'),
             {include: include.include || []}
           )
         );
@@ -1672,7 +1677,7 @@ class Model {
 
       return include.association.get(results, _.assign(
         {},
-        _.omit(options, 'include', 'attributes', 'order', 'where', 'limit', 'plain'),
+        _.omit(options, 'include', 'attributes', 'order', 'where', 'limit', 'offset', 'plain'),
         _.omit(include, 'parent', 'association', 'as')
       )).then(map => {
         for (const result of results) {
@@ -2058,7 +2063,7 @@ class Model {
           values = Utils.defaults(values, options.where);
         }
 
-        instance = this.build(values);
+        instance = this.build(values, options);
 
         return Promise.resolve([instance, true]);
       }
