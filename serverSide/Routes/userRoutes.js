@@ -43,7 +43,7 @@ router.post('/login',(req,res)=>{
     users.findOne({where:{email}})
     .then( user =>{
       user = user.toJSON();
-console.log(user,password)
+
     if(user.length === 0)
     return res.json("email dose not exist in dataBase");
 
@@ -70,33 +70,34 @@ router.get('/isLoged',(req,res)=>{
   res.json(req.session.user? {session:req.session.user,status:true}: false);
 })
 
+
 router.get('/logOut',(req,res)=>{
   req.session.user = "";
   req.session.userId = "";
   res.sendStatus(204);
 })
 
+
 router.get('/userArea',(req,res)=>{
   projects.findAll({where:{userId:req.session.userId}}).then(projects=>{
   res.json(projects)
 })
 })
-/*  let info = data.map(d=>d.toJSON());
-  console.log(info);
-  res.json(info)});*/
 
 
 router.post('/startProject',(req,res)=>{
 const {Category,foalaEditor,fundingDurataion,img,title,fundingGoal} = req.body.data;
 projects.create({img,title,category:Category,description:foalaEditor,fundingDurataion,userId:req.session.userId,fundingGoal})
-.then(()=> res.json("proj created secesfuly")).catch((err)=>res.json("somthing went wrong.make shure that the img your'e trying to uplod is under the limit mentiond above"));
+.then(()=> res.json(true))
+.catch((err)=>res.json("somthing went wrong.make shure that the img your'e trying to uplod is under the limit mentiond above"));
 })
 
 
 router.put('/contribute',(req,res)=>{
-  const contr = +req.body.data;
+  const amountContributed = +req.body.data;
   const projectId = +req.body.id
-  contributedMoney.create({amount:contr,projectId,userId:req.session.userId}).then(()=>res.json('Thank you'));
+  contributedMoney.create({amount:amountContributed,projectId,userId:req.session.userId})
+  .then(()=>res.json('Thank you'));
   })
 
 

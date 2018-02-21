@@ -15,13 +15,17 @@ projStatus
 
   encodeImageFileAsURL(element,value) {
     try{
-    var file = element.files[0];
-    var reader =  new FileReader();
-    let that = this;
+    let file = element.files[0];
+    let reader =  new FileReader();
+    const that = this;
     reader.onloadend =  function() {
       value.img = reader.result;
-      console.log(value)
-      that.server.createProject(value).subscribe(result=>that.projStatus = result);
+
+      that.server.createProject(value).subscribe(result=>{
+
+        if(result)
+        that.projStatus = "project created successfully"
+      });
     }
     reader.readAsDataURL(file);
   }catch(err){this.projStatus = "somthing went wrong, make shure all the fields are filled as required"}
