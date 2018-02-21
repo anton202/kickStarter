@@ -7,14 +7,25 @@ const path = require('path');
 const session = require('express-session');
 
 app.use(express.static('./client/dist'))
-app.use(session({secret:'keyboard cat',saveUninitialized: true, cookie: { path: '/', httpOnly: true, secure: false, maxAge: 60*1000 }}));
-app.use(bodyParser({limit: '50mb'}));
+app.use(session({
+  secret: 'keyboard cat',
+  cookie: {
+    path: '/',
+    httpOnly: true,
+    secure: false,
+    maxAge: 60 * 1000
+  }
+}));
 
-app.use('/api/general',generalRoutes);
-app.use('/api/user',userRoutes);
+app.use(bodyParser({
+  limit: '50mb'
+}));
+
+app.use('/api/general', generalRoutes);
+app.use('/api/user', userRoutes);
 
 app.get('*', (req, res) => {
-    return res.sendFile(path.join('/home/anton/dev/kickStarter/serverSide/client/dist', '/index.html'));
+  return res.sendFile(path.join('/home/anton/dev/kickStarter/serverSide/client/dist', '/index.html'));
 });
 
 app.listen(8080, () => console.log('server runing'));
