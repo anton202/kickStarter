@@ -25,7 +25,7 @@ app.use('/api/general', generalRoutes);
 app.use('/api/user', userRoutes);
 
 app.get('*', (req, res) => {
-  return res.sendFile(path.join('/home/anton/dev/kickStarter/serverSide/client/dist', '/index.html'));
+  return res.sendFile(path.join('/test/dev/kickStarter/serverSide/client/dist', '/index.html'));
 });
 
 app.listen(8080, () => console.log('server runing'));
