@@ -1,9 +1,7 @@
-.header{
+.header {
   font-family: arial;
 }
-.body{
-  font-family: arial;
-}
+
 img {
   width: 300px;
   height: 30px;
@@ -27,7 +25,8 @@ img {
   text-decoration: none;
   color: black;
 }
-.header__user{
+
+.header__user {
   position: absolute;
   right: 50px;
   top: 10px;
@@ -35,30 +34,49 @@ img {
   color: black;
 }
 
-.body{
+.body {
   margin-top: 50px;
   border: 1px solid black;
   border-right: none;
   border-left: none;
   display: flex;
+  font-family: arial;
   justify-content: space-between;
-
 }
 
-.body__genral-info{
+.body__genral-info {
   border-right: 1px solid black;
-padding-right: 200px;
+
+  padding-left: 3%;
+  width: 24%;
 }
 
-.first{
-  padding-left: 100px;
-  padding-right: 100px;
+.body__genral-info:last-child {
+  border-right: none;
 }
 
-.body__genral-info__title{
+.first {
+  padding-left: 3%;
+
+}
+
+.body__genral-info__title {
   margin-top: 20px;
   margin-bottom: 5px;
 }
-.body__genral-info__bottom-title{
+
+.body__genral-info__bottom-title {
   margin-top: 5px;
+}
+
+@media screen and (max-width: 650px) {
+  .header__start-project{
+    display: none;
+  }
+  .header__sign-in{
+    display: none;
+  }
+  .header__user{
+    display: none;
+  }
 }

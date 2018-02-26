@@ -25,7 +25,7 @@ ul{
 
 ul > li{
   display: inline-block;
-  margin-right: 30px;
+  margin-right: 2%;
 }
 
 .body__project-preview{
@@ -33,7 +33,7 @@ ul > li{
   margin-top: 50px;
   margin-bottom: 50px;
   display: inline-block;
-  margin-right: 100px;
+  margin-right: 5%;
   border: 1px solid rgba(0,0,0,0.6);
 }
 
@@ -54,4 +54,18 @@ hr{
 
 .body__project-preview__projcet-title{
   margin-left: 15px;
+}
+
+@media screen and (max-width: 800px) {
+  .body__project-preview{
+    display: block;
+    display: flex;
+    width: 70%;
+  }
+  hr{
+    display: none;
+  }
+   .body__project-preview > a > img{
+    width: 60%;
+  }
 }
