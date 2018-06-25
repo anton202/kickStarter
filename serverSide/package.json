@@ -17,5 +17,8 @@
     "mysql2": "^1.5.1",
     "sequelize": "^4.32.2",
     "tcwd16ssbuild": "^1.0.1"
+  },
+  "devDependencies": {
+    "@angular/cli": "^6.0.8"
   }
 }
