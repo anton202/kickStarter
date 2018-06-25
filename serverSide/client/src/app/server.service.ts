@@ -12,49 +12,49 @@ export class ServerService {
 
   register(data) {
     return this.http
-      .post("/api/user/register", { data })
+      .post("http://46.101.194.54/api/user/register", { data })
       .map(res => res.json());
   }
 
   userLogin(data) {
-    return this.http.post("/api/user/login", { data }).map(res => res.json());
+    return this.http.post("http://46.101.194.54/api/user/login", { data }).map(res => res.json());
   }
 
   isLoged() {
-    return this.http.get("/api/user/isLoged").map(res => res.json());
+    return this.http.get("http://46.101.194.54/api/user/isLoged").map(res => res.json());
   }
 
   logOut() {
-    return this.http.get("/api/user/logOut");
+    return this.http.get("http://46.101.194.54/api/user/logOut");
   }
 
   createProject(data) {
     return this.http
-      .post("/api/user/startProject", { data })
+      .post("http://46.101.194.54/api/user/startProject", { data })
       .map(res => res.json());
   }
 
   getAllProject(id) {
-    return this.http.get("/api/general/viewAll/" + id).map(res => res.json());
+    return this.http.get("http://46.101.194.54/api/general/viewAll/" + id).map(res => res.json());
   }
 
   homePreview(id) {
-    return this.http.get("/api/general/preview/" + id).map(res => res.json());
+    return this.http.get("http://46.101.194.54/api/general/preview/" + id).map(res => res.json());
   }
 
   viewProject(id) {
     return this.http
-      .get("/api/general/viewProject/" + id)
+      .get("http://46.101.194.54/api/general/viewProject/" + id)
       .map(res => res.json());
   }
 
   getUserProjects() {
-    return this.http.get("/api/user/userArea").map(res => res.json());
+    return this.http.get("http://46.101.194.54/api/user/userArea").map(res => res.json());
   }
 
   deleteProject(id) {
     return this.http
-      .delete("/api/user/deletProject/" + id)
+      .delete("http://46.101.194.54/api/user/deletProject/" + id)
       .map(res => res.json());
   }
 }
