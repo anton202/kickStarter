@@ -50,3 +50,18 @@ button {
   text-align: center;
   margin-top: 10px;
 }
+
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+  form{
+    width: 90%;
+  }
+
+  p{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    padding-bottom: 10px;
+  }
+}

@@ -3,9 +3,9 @@
   <img src={{projectData.img}} alt="project-pic">
   <div class="body__project-stats">
     <ul>
-      <li>US$ {{projectData.totalAmountContributed}} <p>pleged of {{projectData.fundingGoal}} goal</p> </li>
-      <li>{{projectData.backers}} <p>backers</p> </li>
-      <li>{{daysLeft}} <p>days to go</p> </li>
+      <li>US$ {{projectData.totalAmountContributed}} <p>Pledged of {{projectData.fundingGoal}}$ goal</p> </li>
+      <li>{{projectData.backers}} <p>Backers</p> </li>
+      <li>{{daysLeft}} <p>Days to go</p> </li>
     </ul>
     <input type="number" name="contribution" #input placeholder="contribute to project $$$">
     <button type="button" (click)="contribute(input.value)"  name="button">Back this project</button>
@@ -15,7 +15,7 @@
   </div>
   <div class="body__project-description">
     <h2>{{projectData.title}}</h2>
-  <div [innerHTML]="projectData.description">
+  <div [innerHTML]="projectData.description" class="body__project-info">
 
   </div>
   </div>

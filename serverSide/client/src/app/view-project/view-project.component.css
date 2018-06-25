@@ -1,63 +1,113 @@
-.body{
+.body {
   margin-top: 50px;
   width: 80%;
   margin: auto;
   font-family: arial;
 }
 
-img{
+img {
   width: 40%;
-  display:inline-block;
-}
-
-h1{
-  margin-top: 50px;
-}
-
-.body__project-stats{
-  width: 40%;
-  margin-left: 15%;
-
-
   display: inline-block;
 }
 
-ul{
+h1 {
+  margin-top: 50px;
+}
+
+.body__project-stats {
+  width: 40%;
+  margin-left: 15%;
+  display: inline-block;
+}
+
+ul {
   list-style: none;
 }
 
-ul>li{
+ul > li {
   font-size: 32px;
 }
 
-ul>li>p{
-  font-size: 20px
+ul > li > p {
+  font-size: 20px;
 }
 
-.body__project-stats > input{
+.body__project-stats > input {
   margin-left: 9%;
   width: 70%;
   height: 30px;
   margin-bottom: 25px;
 }
 
-button{
-    display: block;
-    width: 60%;
-    margin-left: 9%;
-    background-color: #009E74;
-    border: 0;
-    color:white;
-    height: 50px;
-    font-size: 16px;
+button {
+  display: block;
+  width: 60%;
+  margin-left: 9%;
+  background-color: #009e74;
+  border: 0;
+  color: white;
+  height: 50px;
+  font-size: 16px;
 }
 
-.body__project-description{
+.body__project-description {
   margin-top: 100px;
 }
 
-.contributionStatus{
+.contributionStatus {
   width: 80%;
   margin: auto;
   margin-top: 25px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .body {
+    width: 100%;
+  }
+
+  h1 {
+    margin-left: 20px;
+    margin-top: 40px;
+    margin-bottom: 0px;
+    padding-top: 20px;
+    border-top: 1px solid black;
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .body__project-stats{
+    width: 80%; 
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  ul > li > p{
+    margin-top: 5px;
+  }
+
+  h2{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .body__project-info{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .body__project-description{
+    margin-top: 50px;
+  }
+
 }

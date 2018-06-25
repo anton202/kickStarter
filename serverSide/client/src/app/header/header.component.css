@@ -69,14 +69,46 @@ img {
   margin-top: 5px;
 }
 
-@media screen and (max-width: 650px) {
+hr{
+  display: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .header{
+    font-size: 14px;
+  }
+
+  img{
+    width: 200px;
+    height: 20px;
+    margin-top: 30px;
+  }
+
+  .body{
+    display: none;
+  }
+
   .header__start-project{
-    display: none;
+    margin-top: 80px;
+    left: 15px;
   }
+
   .header__sign-in{
-    display: none;
+    margin-top: 80px;
+    right: 80px;
   }
+
   .header__user{
-    display: none;
+    margin-top: 80px;
+    right: 20px;
+  }
+
+  hr{
+    display: block;
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 30px;
   }
 }

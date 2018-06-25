@@ -39,7 +39,7 @@ ul > li{
 
 .body__project-preview > a > img {
   width: 100%;
-  height: 240px;
+  height: auto;
 }
 
 .body__project-preview > ul >li{
@@ -56,16 +56,38 @@ hr{
   margin-left: 15px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .body{
+    margin-left: 15px;
+  }
+
+  .header{
+    margin-top: 40px;
+    margin-left: 0;
+  }
+
+  ul{
+    border-top: 1px solid black;
+    margin: 0;
+    overflow-x: scroll;
+    padding-top: 40px;
+    padding-left: 15px;
+    white-space: nowrap;
+  }
+
+  ul > li{
+    margin-right: 20px;
+  }
+
   .body__project-preview{
     display: block;
-    display: flex;
-    width: 70%;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
   }
-  hr{
-    display: none;
-  }
-   .body__project-preview > a > img{
-    width: 60%;
+
+  .body__project-preview > ul{
+    border-top: none;
+    padding-top: 5px;
   }
 }

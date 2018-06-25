@@ -18,7 +18,6 @@ export class MainComponent implements OnInit {
 
   getCategory(value){
     this.category = value;
-    console.log(this.category)
     this.server.homePreview(value).subscribe(data=>this.projects = data);
   }
   ngOnInit() {
