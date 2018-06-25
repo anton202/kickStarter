@@ -28,4 +28,4 @@ app.get('*', (req, res) => {
   return res.sendFile(path.join('/test/dev/kickStarter/serverSide/client/dist', '/index.html'));
 });
 
-app.listen(8080, () => console.log('server runing'));
+app.listen(8082, () => console.log('server runing'));
