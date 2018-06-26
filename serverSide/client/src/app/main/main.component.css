@@ -39,7 +39,7 @@ ul > li{
 
 .body__project-preview > a > img {
   width: 100%;
-  height: auto;
+  height: 250px;
 }
 
 .body__project-preview > ul >li{
@@ -89,5 +89,10 @@ hr{
   .body__project-preview > ul{
     border-top: none;
     padding-top: 5px;
+  }
+
+  .body__project-preview > a > img {
+    width: 100%;
+    height: auto;
   }
 }

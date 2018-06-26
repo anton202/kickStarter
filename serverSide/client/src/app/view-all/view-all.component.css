@@ -20,7 +20,7 @@
 
 img {
   width: 100%;
-  height: auto;
+  height: 250px;
 }
 
 hr {
@@ -53,5 +53,10 @@ div{
     width: 80%;
     margin-right: auto;
     margin-left: auto;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
   }
 }
