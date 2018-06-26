@@ -5,7 +5,7 @@
   <form (ngSubmit)="encodeImageFileAsURL(img2,f.value)" #f="ngForm">
   <div class="body__input">
     <div class="body__input__left-side">
-      <label for="imgFile">Project Img</label>
+      <label id="pos-absolute1" for="imgFile">Project Img</label>
     </div>
     <div class="body__input__right-side">
       <p>choose an img that represnts your project.</p>
@@ -18,7 +18,7 @@
   <div class="body__input">
     <div class="body__input__left-side">
 
-        <label for="projectTitle">Project Title</label>
+        <label class="pos-absolute" for="projectTitle">Project Title</label>
     </div>
 
     <div class="body__input__right-side">
@@ -48,7 +48,7 @@
 
   <div class="body__input">
     <div class="body__input__left-side">
-      <label for="funding">Funding duration</label>
+      <label for="funding" class="pos-absolute">Funding duration</label>
     </div>
     <div class="body__input__right-side">
       <input id="funding" type="number" name="fundingDurataion" ngModel>
@@ -58,7 +58,7 @@
 
   <div class="body__input">
     <div class="body__input__left-side">
-      <label for="funding">Funding Goal</label>
+      <label class="pos-absolute" for="funding">Funding Goal</label>
     </div>
 
     <div class="body__input__right-side">
