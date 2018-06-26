@@ -22,9 +22,11 @@ projStatus
       value.img = reader.result;
 
       that.server.createProject(value).subscribe(result=>{
-
-        if(result)
-        that.projStatus = "project created successfully"
+        if (result) {
+          that.projStatus = 'project created successfully';
+        } else {
+          that.projStatus = 'Something went wrong, the project did not created';
+        }
       });
     }
     reader.readAsDataURL(file);
