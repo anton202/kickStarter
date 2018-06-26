@@ -87,9 +87,10 @@ router.get('/userArea',(req,res)=>{
 
 router.post('/startProject',(req,res)=>{
 const {Category,foalaEditor,fundingDurataion,img,title,fundingGoal} = req.body.data;
+console.log(req.body.data)
 projects.create({img,title,category:Category,description:foalaEditor,fundingDurataion,userId:req.session.userId,fundingGoal})
 .then(()=> res.json(true))
-.catch((err)=>res.json("somthing went wrong.make shure that the img your'e trying to uplod is under the limit mentiond above"));
+.catch((err)=>res.json(false));
 })
 
 
