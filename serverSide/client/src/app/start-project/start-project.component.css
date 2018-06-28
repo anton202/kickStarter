@@ -73,3 +73,11 @@ button{
   margin-top: 15px;
   margin-bottom: 20px;
 }
+
+.proStatus{
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  font-size: 24px;
+  
+}

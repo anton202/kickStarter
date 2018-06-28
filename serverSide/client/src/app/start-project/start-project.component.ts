@@ -21,13 +21,11 @@ export class StartProjectComponent implements OnInit {
       reader.onloadend = function() {
         value.img = reader.result;
 
-        that.server.createProject(value).subscribe(result => {
-          if (result) {
+        that.server.createProject(value).subscribe(response => {
+          if (response.ok) {
             that.projStatus = 'project created successfully';
-          } else {
-            that.projStatus = 'Something went wrong, the project did not created';
           }
-        });
+        }, (err) => that.projStatus = 'server error, something is wrong with the data you entered');
       };
       reader.readAsDataURL(file);
     } catch (err) {
