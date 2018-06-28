@@ -29,13 +29,14 @@ export class ViewProjectComponent implements OnInit {
 
     contribute(val){
      this.server.isLoged().subscribe(res=>{
-     if(!res.status)
+     if(!res.status){
      return this.router.navigate(['/sign-in']);
-   })
-     this.stats.contribution(val,this.id).subscribe((d)=>{
-       this.contributionStatus = d;
+     }
+   });
+     this.stats.contribution(val,this.id).subscribe(() => {
+       this.contributionStatus = 'Thank you.';
        this.getData();
-     });
+     } ,() => this.contributionStatus = 'oops something went wrong');
    }
 
    getData(){

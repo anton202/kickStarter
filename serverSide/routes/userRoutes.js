@@ -111,7 +111,7 @@ router.put("/contribute", (req, res) => {
       projectId,
       userId: req.session.userId
     })
-    .then(() => res.json("Thank you"));
+    .then(() => res.sendStatus(200));
 });
 
 router.delete("/deletProject/:id", (req, res) => {

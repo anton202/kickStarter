@@ -12,7 +12,7 @@ export class StatsService {
     return this.http.get('/api/general/stats').map(res => res.json());
   }
 
-  contribution(data,id){
-    return this.http.put('/api/user/contribute',{data,id}).map(res => res.json());
+  contribution(data, id) {
+    return this.http.put('/api/user/contribute', {data, id});
   }
 }
