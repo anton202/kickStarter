@@ -25,7 +25,7 @@ export class StartProjectComponent implements OnInit {
           if (response.ok) {
             that.projStatus = 'project created successfully';
           }
-        }, (err) => that.projStatus = 'server error, something is wrong with the data you entered');
+        }, () => that.projStatus = 'server error, something is wrong with the data you entered');
       };
       reader.readAsDataURL(file);
     } catch (err) {

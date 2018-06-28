@@ -17,7 +17,7 @@ router.post('/register',(req,res)=>{
     users.findAll({where: {email}})
     .then(user=>{
     if(user.length !== 0)
-    return res.json("email already exist")
+    return res.sendStatus(409);
 
     bcrypt.genSalt(saltRounds, (err, salt) => {
     bcrypt.hash(password, salt, (err, hashedPassword) => {
@@ -27,7 +27,7 @@ router.post('/register',(req,res)=>{
           email
         })
         .then(() => {
-          res.json("accout created");
+          res.sendStatus(201);
         })
       })
     })
@@ -89,7 +89,7 @@ router.post('/startProject',(req,res)=>{
 const {Category,foalaEditor,fundingDurataion,img,title,fundingGoal} = req.body.data;
 projects.create({img,title,category:Category,description:foalaEditor,fundingDurataion,userId:req.session.userId,fundingGoal})
 .then(()=> res.sendStatus(201))
-.catch((err)=>res.sendStatus(409));
+.catch(()=>res.sendStatus(409));
 })
 
 

@@ -12,8 +12,7 @@ export class ServerService {
 
   register(data) {
     return this.http
-      .post("/api/user/register", { data })
-      .map(res => res.json());
+      .post("/api/user/register", { data });
   }
 
   userLogin(data) {
