@@ -51,7 +51,6 @@ export class ServerService {
 
   deleteProject(id) {
     return this.http
-      .delete('/api/user/deletProject/' + id)
-      .map(res => res.json());
+      .delete('/api/user/deleteProject/' + id);
   }
 }

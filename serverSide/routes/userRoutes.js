@@ -114,11 +114,11 @@ router.put("/contribute", (req, res) => {
     .then(() => res.sendStatus(200));
 });
 
-router.delete("/deletProject/:id", (req, res) => {
+router.delete("/deleteProject/:id", (req, res) => {
   let projId = req.params.id;
   projects.findOne({ where: { id: projId } }).then(data => {
     data.destroy();
-    res.json(true);
+    res.sendStatus(200);
   });
 });
 

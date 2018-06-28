@@ -11,16 +11,13 @@ export class UserComponent implements OnInit {
   userName;
 
   constructor(private server: ServerService) {
-      server.getUserProjects().subscribe(d=>this.userProjects = d);
-      //server.userSub.subscribe(res=>this.userName = res)
+      server.getUserProjects().subscribe(projects => this.userProjects = projects); 
    }
 
-
    delete(id){
-     this.server.deleteProject(id).subscribe(data=>{
-       if(data) this.server.getUserProjects().subscribe(d=>this.userProjects = d);
+     this.server.deleteProject(id).subscribe(() => {
+        this.server.getUserProjects().subscribe(projects => this.userProjects = projects);
      });
-
    }
 
   ngOnInit() {
