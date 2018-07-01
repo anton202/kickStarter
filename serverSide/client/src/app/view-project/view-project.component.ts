@@ -27,7 +27,10 @@ export class ViewProjectComponent implements OnInit {
 
    }
 
-    contribute(val){
+    contribute(val) {
+      if (this.daysLeft <= 0){
+        return this.contributionStatus = 'This project has expired';
+      }
      this.server.isLoged().subscribe(res=>{
      if(!res.status){
      return this.router.navigate(['/sign-in']);
@@ -39,13 +42,16 @@ export class ViewProjectComponent implements OnInit {
      } ,() => this.contributionStatus = 'oops something went wrong');
    }
 
-   getData(){
-    this.server.viewProject(this.id).subscribe(data=>{this.projectData = data;
+   getData() {
+    this.server.viewProject(this.id).subscribe(data => {this.projectData = data;
            this.contributedMoney = data.contributedMoney;
            this.backers = data.backers;
-           let date2:any = new Date(data.createdAt);
-           let date:any = new Date();
-           this.daysPast = Math.round((date-date2)/86400000);
+           const date2: any = new Date(data.createdAt);
+           const date: any = new Date();
+           this.daysPast = Math.round((date-date2) / 86400000);
+           if (data.fundingDurataion - this.daysPast <= 0){
+             return this.daysLeft = 0;
+           }
            this.daysLeft = data.fundingDurataion - this.daysPast;
          });
    }
