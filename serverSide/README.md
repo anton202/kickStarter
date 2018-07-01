@@ -12,7 +12,7 @@ Technion web devloper course - final project.
 # Deployment
 http://46.101.194.54:8082
 
-#Build with
+# Build with
 
 * Angular2
 * Node.js:
