@@ -9,10 +9,10 @@ export class StatsService {
   constructor(private http: Http) { }
 
   getStats(){
-    return this.http.get('/api/general/stats').map(res => res.json());
+    return this.http.get('http://46.101.194.54:8082/api/general/stats').map(res => res.json());
   }
 
   contribution(data, id) {
-    return this.http.put('/api/user/contribute', {data, id});
+    return this.http.put('http://46.101.194.54:8082/api/user/contribute', {data, id});
   }
 }
