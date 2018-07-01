@@ -3,7 +3,6 @@ const router = express.Router()
 const users = require('../models/user.js');
 const projects = require('../models/projects.js')
 const contributedMoney = require('../models/contributedMoney.js');
-//const logic = require('../logic.js');
 const Sequelize = require('sequelize');
 
 const total = {
