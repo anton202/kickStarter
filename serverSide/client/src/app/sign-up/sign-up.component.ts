@@ -14,7 +14,7 @@ export class SignUpComponent implements OnInit {
   userInfo(data) {
     this.server.register(data).subscribe(() => {
       this.registerStatus = 'account created';
-      setTimeout(() => this.router.navigate(["/sign-in"]), 1000);
+      setTimeout(() => this.router.navigate(["/sign-in"]), 2000);
     },
      () => (this.registerStatus = 'email already exist'));
   }

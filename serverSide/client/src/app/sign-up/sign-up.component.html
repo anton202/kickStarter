@@ -5,7 +5,7 @@
     <input type="email" name="email" placeholder="Email"  ngModel required >
     <input type="password" name="password" placeholder="Password" ngModel required>
     <button type="submit" [disabled]="f.invalid" name="button">create account</button>
-      <div class="body_reg-status" *ngIf="registerStaus">
+      <div class="body_reg-status" >
         {{registerStatus}}
       </div>
   </form>
