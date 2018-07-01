@@ -12,17 +12,16 @@ export class SignInComponent implements OnInit {
   constructor(private server: ServerService, private router: Router) { }
 
   login(data){
-    this.server.userLogin(data).subscribe(res => {
-    if (!res.status) {
-    return this.loginStatus = 'successfully logged in';
+    this.server.userLogin(data).subscribe(res=>{
+    if(!res.status){
+    return this.loginStatus = res.message;
     }
-    setTimeout(() => this.router.navigate(['/main']),1000);
+    setTimeout(()=>this.router.navigate(['/main']),1000);
     this.loginStatus = res.message;
     this.server.userSub.next(res.userName);
     this.server.signOut.next(true);
   })
   }
-
   ngOnInit() {
   }
 
