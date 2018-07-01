@@ -28,7 +28,7 @@ export class ServerService {
   }
 
   createProject(data) {
-    return this.http.post('/api/user/startProject', { data })
+    return this.http.post('/api/user/startProject', { data });
   }
 
   getAllProject(id) {

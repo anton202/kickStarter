@@ -13,8 +13,7 @@ export class UserComponent implements OnInit {
   constructor(private server: ServerService) {
       server.getUserProjects().subscribe(projects => this.userProjects = projects); 
    }
-
-   delete(id){
+   delete(id) {
      this.server.deleteProject(id).subscribe(() => {
         this.server.getUserProjects().subscribe(projects => this.userProjects = projects);
      });

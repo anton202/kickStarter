@@ -13,7 +13,7 @@ export class MainComponent implements OnInit {
   projects;
 
   constructor(private server: ServerService) {
-    server.homePreview(this.category).subscribe(data=>{this.projects = data;console.log(this.projects)});
+    server.homePreview(this.category).subscribe(data=>{this.projects = data});
    }
 
   getCategory(value){

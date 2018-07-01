@@ -3,7 +3,6 @@ const router = express.Router();
 const users = require("../models/user.js");
 const projects = require("../models/projects.js");
 const contributedMoney = require("../models/contributedMoney.js");
-const Sequelize = require("sequelize");
 const bcrypt = require("bcrypt");
 
 const saltRounds = 10;
@@ -47,7 +46,7 @@ router.post("/login", (req, res) => {
         req.session.user = user;
 
         return res.json({
-          message: "secsesfuly loged in",
+          message: "successfully logged in",
           status: true,
           userName: user.name,
           userId: user.id

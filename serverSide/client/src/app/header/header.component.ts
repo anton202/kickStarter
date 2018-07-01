@@ -21,29 +21,29 @@ allStats = {};
     stats.getStats().subscribe(data=>this.allStats = data)
   }
 
-  signOut(){
-    if(this.signOutStatus){
-    this.server.logOut().subscribe(()=>{});
+  signOut() {
+    if (this.signOutStatus){
+    this.server.logOut().subscribe(() => {});
     this.server.userSub.next('User');
     this.server.signOut.next(false);
   }
   }
 
   ngOnInit() {
-    this.server.userSub.subscribe(d=>this.userName = d);
-    this.server.isLoged().subscribe(res=>{
-      console.log(res);
-      if(res.status){
-
+    this.server.userSub.subscribe(d => this.userName = d);
+    this.server.isLoged().subscribe(res => {
+      if (res.status) {
       this.server.userSub.next(res.session.name);
       this.server.signOut.next(true);
     }
-    })
-    this.server.signOut.subscribe(d=>{
-      if(d){
+    });
+    this.server.signOut.subscribe(data => {
+      if (data) {
       this.signInOut = 'Sign Out';
-      this.signOutStatus = d;
-    }else this.signInOut = 'Sign In';
+      this.signOutStatus = data;
+    } else {
+      this.signInOut = 'Sign In';
+    }
     });
   }
 
