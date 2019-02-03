@@ -15,10 +15,10 @@ date = new Date().toLocaleDateString();
 userName = 'User';
 signInOut:string = 'Sign In'
 signOutStatus;
-allStats = {};
+allStats;
 
   constructor(private stats: StatsService, private server:ServerService) {
-    stats.getStats().subscribe(data=>this.allStats = data)
+    
   }
 
   signOut() {
@@ -30,6 +30,7 @@ allStats = {};
   }
 
   ngOnInit() {
+    this.stats.getStats().subscribe(data=>this.allStats = data)
     this.server.userSub.subscribe(d => this.userName = d);
     this.server.isLoged().subscribe(res => {
       if (res.status) {
