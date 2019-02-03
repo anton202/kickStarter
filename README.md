@@ -23,7 +23,5 @@ http://46.101.194.54:8082
 # Build with
 
 * Angular2
-* Node.js:
- * Express.js
- * Sequelize
+* Node.js
 * Mysql
