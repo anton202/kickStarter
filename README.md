@@ -1,5 +1,13 @@
-# kickStart project.
-Technion web devloper course - final project.
+
+  <img width="500" height="60" src="https://github.com/anton202/kickStarter/blob/master/client/src/assets/kickstarter-logo.png">
+  
+##### Technion web devloper course - final project.
+
+![kickStartet](https://github.com/anton202/kickStarter/blob/master/client/src/assets/homePage.png) 
+<br>
+![projectPage](https://github.com/anton202/kickStarter/blob/master/client/src/assets/projectPage.png)
+
+
 
 # Getting started 
 
