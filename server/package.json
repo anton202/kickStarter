@@ -15,7 +15,7 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "mysql2": "^1.5.1",
-    "sequelize": "^4.32.2",
+    "sequelize": "^5.15.1",
     "tcwd16ssbuild": "^1.0.1"
   }
 }
